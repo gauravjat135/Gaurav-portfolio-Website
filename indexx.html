@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gaurav Chaudhary | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      color: #222;
+    }
+    header, footer {
+      text-align: center;
+      padding: 40px 20px 20px;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    header img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      font-size: 2.6rem;
+      color: #2d3a4b;
+      margin: 10px 0 5px;
+    }
+    header p {
+      color: #4a6073;
+      font-size: 1.2rem;
+      margin: 0;
+    }
+    .resume-btn {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 10px 24px;
+      background: #2d3a4b;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .resume-btn:hover {
+      background: #3a5ba0;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(60, 120, 200, 0.08);
+    }
+    section {
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+    section:nth-of-type(1) { animation-delay: 0.2s; }
+    section:nth-of-type(2) { animation-delay: 0.4s; }
+    section:nth-of-type(3) { animation-delay: 0.6s; }
+    section:nth-of-type(4) { animation-delay: 0.8s; }
+    section:nth-of-type(5) { animation-delay: 1s; }
+    section:nth-of-type(6) { animation-delay: 1.2s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    h2 {
+      color: #3a5ba0;
+    }
+    p, li {
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 30px;
+      background: linear-gradient(90deg, #66a6ff, #89f7fe);
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #89f7fe, #66a6ff);
+      transform: scale(1.05);
+    }
+    .toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #232526;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .dark-mode {
+      background: linear-gradient(135deg, #232526, #414345);
+      color: #eee;
+    }
+    .dark-mode header, .dark-mode footer {
+      background: rgba(34, 40, 49, 0.92);
+    }
+    .dark-mode main {
+      background: #2e2e2e;
+    }
+    .dark-mode h2,
+    .dark-mode header h1 {
+      color: #fff;
+    }
+    .dark-mode header p {
+      color: #ccc;
+    }
+    .project-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: rgba(102, 166, 255, 0.05);
+    }
+    .project-info {
+      flex: 1;
+      margin-right: 20px;
+    }
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .project-desc {
+      font-size: 1rem;
+      color: #333;
+    }
+    @media (max-width: 600px) {
+      .project-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .project-info {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+    h1#typing-text {
+    background: linear-gradient(90deg, #ff6ec4, #7873f5, #66a6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    animation: flicker 3s linear infinite;
+  }
+  @keyframes flicker {
+    0% { background-position: 0% }
+    100% { background-position: 200% }
+  }
+
+  .project-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .project-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  .floating-cta {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: #2d3a4b;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    text-decoration: none;
+    z-index: 1000;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <img src="gauravv.jpg" alt="Gaurav Chaudhary" />
+    <h1 id="typing-text"></h1>
+    <p>Web Developer | Full-Stack Enthusiast</p>
+    <a href="Gaurav-chaudhary-resume.pdf" class="resume-btn" target="_blank">📄 View Resume</a>
+  </header>
+
+  <main>
+    <section id="about" data-aos="fade-up">
+      <h2>About Me</h2>
+      <p>Hi, I'm Gaurav! A passionate BSc Computer Science student at Annasaheb Vartak College (2024–2027). I love creating responsive, performance-optimized websites and full-stack applications using modern technologies like React, Node.js, MongoDB, and Tailwind CSS.</p>
+    </section>
+
+    <section id="education" data-aos="fade-up">
+      <h2>Education</h2>
+      <p><strong>Bachelor of Science in Computer Science</strong><br>Annasaheb Vartak College, Vasai, India<br>Aug. 2024 – May 2027</p>
+    </section>
+
+    <section id="projects" data-aos="fade-up">
+      <h2>Projects</h2>
+      <div class="project-item">
+        <div class="project-info">
+          <div class="project-title">Netflix Clone</div>
+          <div class="project-desc">Pixel-perfect Netflix homepage replica using HTML, CSS, and JS.</div>
+        </div>
+        <a href="https://github.com/gauravjat135/Netflix-clone" target="_blank" class="btn">View Project</a>
+      </div>
+      <div class="project-item">
+        <div class="project-info">
+          <div class="project-title">Spotify Clone</div>
+          <div class="project-desc">Interactive UI with dynamic playlists and song previews.</div>
+        </div>
+        <a href="https://github.com/gauravjat135/spotify_clone" target="_blank" class="btn">View Project</a>
+      </div>
+      <div class="project-item">
+        <div class="project-info">
+          <div class="project-title">Twitter X Clone</div>
+          <div class="project-desc">Responsive Twitter-style frontend using Tailwind CSS.</div>
+        </div>
+        <a href="https://github.com/gauravjat135/Twitter-X-clone" target="_blank" class="btn">View Project</a>
+      </div>
+      <div class="project-item">
+        <div class="project-info">
+          <div class="project-title">Jarvis</div>
+          <div class="project-desc">Jarvis works on voice command. It is purely made with Python</div>
+        </div>
+        <a href="https://github.com/gauravjat135/Jarvis" target="_blank" class="btn">View Project</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Hackathons</h2>
+      <p><strong>HackHive Intercollegiate Code-a-thon</strong><br>Built an AI/ML-integrated PERN stack app with real-time predictions, PostgreSQL backend, and React frontend in 48 hours.</p>
+    </section>
+
+    <section id="skills" data-aos="fade-up">
+      <h2>Technical Skills</h2>
+      <ul>
+        <li><strong>Languages:</strong> JavaScript, HTML, CSS, Python, SQL</li>
+        <li><strong>Frameworks/Libraries:</strong> React, Next.js, Node.js, Express.js, Tailwind CSS, Mongoose</li>
+        <li><strong>Tools:</strong> Git, GitHub, VS Code, Postman, NPM, REST APIs</li>
+        <li><strong>Databases:</strong> MongoDB, PostgreSQL, SQL</li>
+        <li><strong>Concepts:</strong> Responsive Design, Full-stack Dev, Performance Optimization, AI/ML Integration</li>
+      </ul>
+    </section>
+
+    <section id="contact" data-aos="fade-up">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:gauravjaat1335@gmail.com">gauravjaat1335@gmail.com</a><br>
+         Phone: <a href="tel:+919175028935">+91-9175028935</a><br>
+         LinkedIn: <a href="https://www.linkedin.com/in/gaurav-chaudhary-163bb2361" target="_blank">Gaurav Chaudhary</a><br>
+         GitHub: <a href="https://github.com/gauravjat135" target="_blank">gauravjat135</a>
+      </p>
+    </section>
+    </main>
+
+  <a href="#contact" class="floating-cta">💬 Let's Talk</a>
+
+  <footer>
+    &copy; 2025 Gaurav Chaudhary. All rights reserved.
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Dark Mode Toggle
+      const toggleBtn = document.createElement('button');
+      toggleBtn.className = 'toggle-btn';
+      toggleBtn.textContent = '🌙 Dark Mode';
+      document.body.appendChild(toggleBtn);
+
+      const isDark = localStorage.getItem('dark') === 'true';
+      if (isDark) {
+        document.body.classList.add('dark-mode');
+        toggleBtn.textContent = '☀️ Light Mode';
+      }
+
+      toggleBtn.onclick = () => {
+        const dark = document.body.classList.toggle('dark-mode');
+        toggleBtn.textContent = dark ? '☀️ Light Mode' : '🌙 Dark Mode';
+        localStorage.setItem('dark', dark);
+      };
+
+      // Typing Effect
+      const roles = ["Web Developer", "UI Designer", "Python Enthusiast"];
+      const roleText = document.querySelector("header p");
+      let r = 0;
+      setInterval(() => {
+        roleText.textContent = roles[r];
+        r = (r + 1) % roles.length;
+      }, 3000);
+
+      const nameText = "Gaurav Chaudhary";
+      const typingElement = document.getElementById("typing-text");
+      let index = 0;
+      function type() {
+        if (index < nameText.length) {
+          typingElement.textContent += nameText.charAt(index);
+          index++;
+          setTimeout(type, 100);
+        }
+      }
+      type();
+    });
+  </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, offset: 100 });
+  </script>
+</body>
+</html>
